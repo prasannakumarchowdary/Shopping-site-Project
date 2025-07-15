@@ -11,9 +11,9 @@
        src: target
        dest: /home/admin-user
     - name : Build image
-      command: docker build -t ramarao388/zomato9 .
+      command: docker build -t pressu31/zomato9 .
     - name : Push Docker Image
-      command: docker push ramarao388/zomato9
+      command: docker push pressu31/zomato9
 - name: Deployment into Kubernetes Cluster
   hosts: eks
   tasks:
