@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: shopping-app-container
-          image: ramarao388/zomato9
+          image: pressu31/zomato9
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
