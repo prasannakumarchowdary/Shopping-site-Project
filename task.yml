@@ -9,8 +9,8 @@
        dest: /home/admin-user
     - name: Copy WAR file
       copy:
-       src: target/app.war
-       dest: /home/admin-user/app.war
+       src: target
+       dest: /home/admin-user
     - name : Build Docker image
       command: docker build -t pressu31/zomato9 .
       args:
