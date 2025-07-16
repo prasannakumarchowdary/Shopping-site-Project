@@ -12,7 +12,6 @@
        src: target
        dest: /home/admin-user
     - name : Build Docker image
-      become : yes
       command: docker build -t pressu31/zomato9
     - name : Push Docker Image
       command: docker push pressu31/zomato9
