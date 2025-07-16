@@ -13,8 +13,6 @@
        dest: /home/admin-user
     - name : Build Docker image
       command: docker build -t pressu31/zomato9 .
-      args:
-        chdir: /home/admin-user
     - name : Push Docker Image
       command: docker push pressu31/zomato9
 - name: Deployment into Kubernetes Cluster
