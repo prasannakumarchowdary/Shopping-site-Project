@@ -18,11 +18,11 @@
 - name: Deployment into Kubernetes Cluster
   hosts: eks
   tasks:
-   - name: Copy K8s Deployment YAML 
+   - name: 
      copy:
        src: DeploymentIntoK8sCluster.yml
        dest: /home/admin-user
-   - name:  K8s Deployment 
+   - name:  
      copy:
        src: LB-Service.yml
        dest: /home/admin-user
