@@ -1,49 +1,32 @@
+
 ---
 - name: Docker Image Build
   hosts: docker
-  become: true
   tasks:
     - name: Copy Dockerfile
       copy:
-        src: Dockerfile
-        dest: /home/admin-user/Dockerfile
-
+       src: Dockerfile
+       dest: /home/admin-user
     - name: Copy WAR file
       copy:
-        src: target/
-        dest: /home/admin-user/target/
-        mode: preserve
-
-    - name: Build Docker image
+       src: target
+       dest: /home/admin-user
+    - name : Build image
       command: docker build -t pressu31/zomato9 .
-      args:
-        chdir: /home/admin-user
-
-    - name: Push Docker Image
+    - name : Push Docker Image
       command: docker push pressu31/zomato9
-
----
-
 - name: Deployment into Kubernetes Cluster
   hosts: eks
-  become: true
   tasks:
-    - name: Copy K8s Deployment YAML
-      copy:
-        src: DeploymentIntoK8sCluster.yml
-        dest: /home/admin-user/DeploymentIntoK8sCluster.yml
-
-    - name: Copy LB Service YAML
-      copy:
-        src: LB-Service.yml
-        dest: /home/admin-user/LB-Service.yml
-
-    - name: Apply K8s Deployment
-      command: kubectl apply -f DeploymentIntoK8sCluster.yml
-      args:
-        chdir: /home/admin-user
-
-    - name: Apply LoadBalancer Service
-      command: kubectl apply -f LB-Service.yml
-      args:
-        chdir: /home/admin-user
+   - name: 
+     copy:
+       src: DeploymentIntoK8sCluster.yml
+       dest: /home/admin-user
+   - name: 
+     copy:
+       src: LB-Service.yml
+       dest: /home/admin-user
+   - name : K8S Deployment
+     command: kubectl apply -f DeploymentIntoK8sCluster.yml
+   - name : LB Service
+     command: kubectl apply -f LB-Service.yml
